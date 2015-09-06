@@ -11,9 +11,12 @@ $json = file_get_contents('php://input') . PHP_EOL;
 $data = json_decode($json, true);
 
 // Logging Hooks Data Raw
+$time = date('Y-m-d H:i:s', time());
+logging("hooks_raw", "<" . $time . ">" . PHP_EOL);
 logging("hooks_raw", $json);
 
 // Logging Hooks Data Array
+logging("hooks", "<" . $time . ">" . PHP_EOL);
 logging("hooks", $data);
 
 // Global Variable
