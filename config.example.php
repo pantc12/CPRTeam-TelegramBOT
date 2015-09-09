@@ -5,7 +5,7 @@ define('BOT_NAME', '');
 
 
 $cmd_list = array(
-    'Command' => 'Command Description',
+    'Command Description',
 );
 
 $users = array(
