@@ -63,7 +63,7 @@ function whois($host){
 function help(){
     $msg = "Available Commands: " . PHP_EOL;
     foreach ($GLOBALS['cmd_list'] as $cmd => $cmd_desc) {
-        $msg .= "/$cmd - $cmd_desc" . PHP_EOL;
+        $msg .= "/$cmd $cmd_desc" . PHP_EOL;
     }
     sendMsg($msg);
 }
