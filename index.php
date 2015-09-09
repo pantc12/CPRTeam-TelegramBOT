@@ -30,7 +30,7 @@ $message = $data['message']['text'];
 
 if($userName != ""){                            // Check isset username
     if(substr($message, 0, 1) == "/"){          // Check is command
-        if(in_array($fromID, $users)){          // Check White List
+        if(in_array($fromID, $users) || in_array($chatID, $groups)){          // Check White List
             $message = strtolower($message);
             $cmd = str_replace(strtolower("@" . BOT_NAME), '', $message);
             $cmd = split(' ', $cmd);

@@ -11,3 +11,7 @@ $cmd_list = array(
 $users = array(
     00000000, // Telegram User ID
 );
+
+$groups = array(
+    -0000000, // Telegram Group ID
+);
