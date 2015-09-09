@@ -79,7 +79,6 @@ function is_domain($d){
 
 function run_shell_cmd($cmd) {
     exec("$cmd", $output, $status);
-    $msg = '@' . $GLOBALS['userName'] . PHP_EOL;
     foreach($output as $line){
         $msg .= $line . PHP_EOL;
     }
