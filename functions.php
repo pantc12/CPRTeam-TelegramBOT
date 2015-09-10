@@ -41,9 +41,12 @@ function traceroute6($host){
 }
 
 function nslookup($host, $server = "8.8.8.8"){
-    if( filter_var($host, FILTER_VALIDATE_IP) || 
+    if( (filter_var($host, FILTER_VALIDATE_IP) || 
         filter_var(gethostbyname($host), FILTER_VALIDATE_IP) ||
-        is_domain($host)){
+        is_domain($host)) &&
+        (filter_var($server, FILTER_VALIDATE_IP) || 
+        filter_var(gethostbyname($server), FILTER_VALIDATE_IP) ||
+        is_domain($server)) ){
         run_shell_cmd("timeout 30 /usr/bin/nslookup $host $server");
     }else{
         error(4);
