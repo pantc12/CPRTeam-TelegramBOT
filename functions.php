@@ -73,7 +73,7 @@ function help(){
 
 function burn(){
     $vid = "BQADBQADEgADxlc1AjMaAAFa-KXBTgI";
-    sendVoice($v);
+    sendVoice($vid);
 }
 
 function helpless(){
