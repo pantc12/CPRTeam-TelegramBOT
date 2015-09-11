@@ -117,7 +117,6 @@ if($userName != ""){                            // Check isset username
             sendMsg("嗨~ Tag 我幹嘛?");
         }
         
-        preg_match('/無.*奈.*/', $message);
         if(preg_match('/無.*奈.*/', $message) === 1){
             helpless();
         }
