@@ -123,6 +123,7 @@ function run_shell_cmd($cmd) {
 }
 
 function sendMsg($m, $is_reply = true){
+    sendChatAction("sendMsg");
     $cid = $GLOBALS['chatID'];
     $mid = $GLOBALS['messageID'];
     $m = urlencode($m);
@@ -137,6 +138,7 @@ function sendMsg($m, $is_reply = true){
 }
 
 function sendSticker($f, $is_reply = true){
+    sendChatAction("sendSticker");
     $cid = $GLOBALS['chatID'];
     $mid = $GLOBALS['messageID'];
     $url = "https://api.telegram.org/bot" . TOKEN . "/sendSticker?chat_id=" . $cid;
@@ -150,6 +152,7 @@ function sendSticker($f, $is_reply = true){
 }
 
 function sendVoice($v, $is_reply = true){
+    sendChatAction("sendVoice");
     $cid = $GLOBALS['chatID'];
     $mid = $GLOBALS['messageID'];
     $url = "https://api.telegram.org/bot" . TOKEN . "/sendVoice?chat_id=" . $cid;
@@ -157,6 +160,45 @@ function sendVoice($v, $is_reply = true){
         $url .= "&reply_to_message_id=" . $mid;
     }
     $url .= "&voice=" . $v;
+    $ch = curl_init($url);
+    curl_exec($ch);
+    curl_close($ch);
+}
+
+function sendChatAction($a){
+    $cid = $GLOBALS['chatID'];
+    $action = "";
+
+    switch ($a) {
+        case "sendMsg":
+        case "sendSticker":
+            $action = "typing";
+            break;
+
+        case "sendPhoto":
+            $action = "upload_photo";
+            break;
+
+        case "sendVideo":
+            $action = "upload_video";
+            break;
+
+        case "sendAudio":
+        case "sendVoice":
+            $action = "upload_audio";
+            break;
+
+        case "sendDoc":
+            $action = "upload_document";
+            break;
+
+        default:
+            $action = "typing";
+            break;
+    }
+
+    $url = "https://api.telegram.org/bot" . TOKEN . "/sendChatAction?chat_id=" . $cid;
+    $url .= "&action=" . $action;
     $ch = curl_init($url);
     curl_exec($ch);
     curl_close($ch);
