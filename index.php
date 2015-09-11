@@ -112,7 +112,7 @@ if($userName != ""){                            // Check isset username
             sendMsg("嗨~ Tag 我幹嘛?");
         }
         
-        if(strpos($message, "無奈") !== false){
+        if(strpos($message, "無") !== false && strpos($message, "奈") !== false){
             helpless();
         }
     }
