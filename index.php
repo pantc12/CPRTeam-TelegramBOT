@@ -121,7 +121,7 @@ if($userName != ""){                            // Check isset username
             eww();
         }
 
-        if(preg_match('/怪.*我.*囉.*/', "怪我囉") === 1){
+        if(preg_match('/怪.*我.*囉.*/', $message) === 1){
             mybad();
         }
     }
