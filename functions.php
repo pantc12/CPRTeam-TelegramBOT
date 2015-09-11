@@ -128,7 +128,7 @@ function sendMsg($m, $is_reply = true){
     $mid = $GLOBALS['messageID'];
     $m = urlencode($m);
     $url = "https://api.telegram.org/bot" . TOKEN . "/sendMessage?chat_id=" . $cid;
-    $url .= "&disable_web_page_preview=ture";
+    $url .= "&disable_web_page_preview=true";
     if($is_reply){
         $url .= "&reply_to_message_id=" . $mid;
     }
