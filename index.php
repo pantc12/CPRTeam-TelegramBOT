@@ -111,5 +111,9 @@ if($userName != ""){                            // Check isset username
         if(strpos($message, "@" . BOT_NAME) !== false){
             sendMsg("嗨~ Tag 我幹嘛?");
         }
+        
+        if(strpos($message, "無奈") !== false){
+            helpless();
+        }
     }
 }
