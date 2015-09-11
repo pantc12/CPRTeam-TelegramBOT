@@ -112,15 +112,16 @@ if($userName != ""){                            // Check isset username
             sendMsg("嗨~ Tag 我幹嘛?");
         }
         
-        if(strpos($message, "無") !== false && strpos($message, "奈") !== false){
+        preg_match('/無.*奈.*/', $message);
+        if(preg_match('/無.*奈.*/', $message) === 1){
             helpless();
         }
 
-        if(strpos($message, "矮") !== false && strpos($message, "額") !== false){
+        if(preg_match('/矮.*額.*/', $message) === 1){
             eww();
         }
 
-        if(strpos($message, "怪") !== false && strpos($message, "我") !== false && strpos($message, "囉") !== false){
+        if(preg_match('/怪.*我.*囉.*/', "怪我囉") === 1){
             mybad();
         }
     }
