@@ -115,5 +115,9 @@ if($userName != ""){                            // Check isset username
         if(strpos($message, "無") !== false && strpos($message, "奈") !== false){
             helpless();
         }
+
+        if(strpos($message, "矮") !== false && strpos($message, "額") !== false){
+            eww();
+        }
     }
 }
