@@ -72,7 +72,7 @@ function help(){
 }
 
 function burn(){
-    $vid = "BQADBQADEgADxlc1AjMaAAFa-KXBTgI";
+    $vid = "AwADBQADCwAD5Bf9B8FIuhQiaDILAg";
     sendVoice($vid);
 }
 
