@@ -4,7 +4,11 @@ date_default_timezone_set('Asia/Taipei');
 header('Accept: application/json');
 
 include_once('config.php');
-include_once('functions.php');
+include_once('logging.php');
+include_once('error.php');
+include_once('commands.php');
+include_once('tools.php');
+include_once('api.php');
 
 // Get Telegram Hooks POST Data
 $json = file_get_contents('php://input') . PHP_EOL;
@@ -114,7 +118,7 @@ if($userName != ""){                            // Check isset username
         }
     }else{
         if(strpos($message, "@" . BOT_NAME) !== false){
-            sendMsg("嗨~ Tag 我幹嘛?");
+            sendMsg("嗨~Tag我幹嘛?");
         }
         
         if(preg_match('/無.*奈.*/', $message) === 1){
