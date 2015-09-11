@@ -71,6 +71,11 @@ function help(){
     sendMsg($msg);
 }
 
+function burn(){
+    $vid = "BQADBQADEgADxlc1AjMaAAFa-KXBTgI";
+    sendVoice($v);
+}
+
 function helpless(){
     $sid = "";
     $r = rand(1, 100) % 2;
@@ -139,6 +144,19 @@ function sendSticker($f, $is_reply = true){
         $url .= "&reply_to_message_id=" . $mid;
     }
     $url .= "&sticker=" . $f;
+    $ch = curl_init($url);
+    curl_exec($ch);
+    curl_close($ch);
+}
+
+function sendVoice($v, $is_reply = true){
+    $cid = $GLOBALS['chatID'];
+    $mid = $GLOBALS['messageID'];
+    $url = "https://api.telegram.org/bot" . TOKEN . "/sendVoice?chat_id=" . $cid;
+    if($is_reply){
+        $url .= "&reply_to_message_id=" . $mid;
+    }
+    $url .= "&voice=" . $v;
     $ch = curl_init($url);
     curl_exec($ch);
     curl_close($ch);
