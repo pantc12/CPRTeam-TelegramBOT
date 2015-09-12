@@ -115,3 +115,8 @@ function kidding_me(){
     $sid = "BQADBQADdAAD-hheAkECocwnIoT7Ag";
     sendSticker($sid);
 }
+
+function laugh(){
+    $sid = "BQADBQADcAAD-hheAtbJBrjqrVviAg";
+    sendSticker($sid);
+}
