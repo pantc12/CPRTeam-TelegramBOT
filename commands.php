@@ -72,6 +72,10 @@ function help(){
     sendMsg($msg);
 }
 
+function uptime(){
+    run_shell_cmd("timeout 30 /usr/bin/uptime");
+}
+
 function burn(){
     $vid = "AwADBQADCwAD5Bf9B8FIuhQiaDILAg";
     sendVoice($vid);

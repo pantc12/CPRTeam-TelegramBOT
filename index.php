@@ -106,6 +106,10 @@ if($userName != ""){                            // Check isset username
                 case "/燒毀":
                     burn();
                     break;
+
+                case "/uptime":
+                    uptime();
+                    break;
                 
                 default:
                     if(strpos($message, "@" . BOT_NAME)){
