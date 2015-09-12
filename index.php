@@ -44,7 +44,7 @@ if($userName != ""){                            // Check isset username
                     if(count($cmd) == 2){
                         ping($cmd[1]);  
                     }else{
-                        error(4);
+                        error(BAD_PARAMETER);
                     }
                     break;
 
@@ -52,7 +52,7 @@ if($userName != ""){                            // Check isset username
                     if(count($cmd) == 2){
                         ping6($cmd[1]); 
                     }else{
-                        error(4);
+                        error(BAD_PARAMETER);
                     }
                     break;
 
@@ -60,7 +60,7 @@ if($userName != ""){                            // Check isset username
                     if(count($cmd) == 2){
                         traceroute($cmd[1]);
                     }else{
-                        error(4);
+                        error(BAD_PARAMETER);
                     }
                     break;
 
@@ -68,7 +68,7 @@ if($userName != ""){                            // Check isset username
                     if(count($cmd) == 2){
                         traceroute6($cmd[1]);
                     }else{
-                        error(4);
+                        error(BAD_PARAMETER);
                     }
                     break;
                 
@@ -78,7 +78,7 @@ if($userName != ""){                            // Check isset username
                     }if(count($cmd) == 2){
                         nslookup($cmd[1]);
                     }else{
-                        error(4);
+                        error(BAD_PARAMETER);
                     }
                     break;
 
@@ -86,7 +86,7 @@ if($userName != ""){                            // Check isset username
                     if(count($cmd) == 2){
                         whois($cmd[1]);
                     }else{
-                        error(4);
+                        error(BAD_PARAMETER);
                     }
                     break;
 
@@ -98,7 +98,7 @@ if($userName != ""){                            // Check isset username
                     if(count($cmd) == 3){
                         search($cmd[1], $cmd[2]);
                     }else{
-                        error(4);
+                        error(BAD_PARAMETER);
                     }
                     break;
 
@@ -114,7 +114,7 @@ if($userName != ""){                            // Check isset username
                     break;
             }
         }else{
-            error(2);
+            error(PERMISSION_ERROR);
         }
     }else{
         if(strpos($message, "@" . BOT_NAME) !== false){
