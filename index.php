@@ -132,5 +132,13 @@ if($userName != ""){                            // Check isset username
         if(preg_match('/怪.*我.*囉.*/', $message) === 1){
             mybad();
         }
+
+        if(preg_match('/[Zz][Zz][Zz]/', $message) === 1){
+            zzz();
+        }
+
+        if(preg_match('/別.*鬧.*了.*/', $message) === 1){
+            kidding_me();
+        }
     }
 }

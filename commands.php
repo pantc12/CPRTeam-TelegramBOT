@@ -105,3 +105,13 @@ function mybad(){
     $sid = "BQADBQADXQADzNLEAxaoU9qjWGeBAg";
     sendSticker($sid);
 }
+
+function zzz(){
+    $sid = "BQADBQADbwAD-hheAlEd1dYRPLKaAg";
+    sendSticker($sid);
+}
+
+function kidding_me(){
+    $sid = "BQADBQADdAAD-hheAkECocwnIoT7Ag";
+    sendSticker($sid);
+}
