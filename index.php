@@ -7,7 +7,7 @@ include_once('config.php');
 include_once('logging.php');
 include_once('error.php');
 include_once('commands.php');
-include_once('sitckers.php');
+include_once('stickers.php');
 include_once('tools.php');
 include_once('api.php');
 
