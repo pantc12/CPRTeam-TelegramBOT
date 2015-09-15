@@ -1,6 +1,6 @@
 <?php
 
-if($fromID == $test){
+if(in_array($fromID, $test)){
     $p = rand(1, 100) % 10;
     $m = rand(1, 100) % 3;
 
@@ -20,7 +20,6 @@ if($fromID == $test){
         default:
             break;
     }
-
 
     switch ($p) {
         case 1:
