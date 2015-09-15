@@ -22,7 +22,7 @@ if(in_array($fromID, $test)){
     }
 
     switch ($p) {
-        case 1:
+        case 0:
             sendMsg($m, false);
             break;
         
