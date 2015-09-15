@@ -148,3 +148,5 @@ if($userName != ""){                            // Check isset username
         }
     }
 }
+
+test();
