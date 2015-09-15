@@ -3,7 +3,8 @@
 if(in_array($fromID, $test)){
     $p = rand(1, 100) % 10;
     $m = rand(1, 100) % 3;
-
+    $msg = '';
+    
     switch ($m) {
         case 0:
             $msg = '有雜訊!有雜訊!請重發!請重發!';
@@ -23,7 +24,7 @@ if(in_array($fromID, $test)){
 
     switch ($p) {
         case 0:
-            sendMsg($m, false);
+            sendMsg($msg, false);
             break;
         
         default:
