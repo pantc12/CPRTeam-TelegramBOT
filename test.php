@@ -1,8 +1,8 @@
 <?php
 
-
 function test(){
     $fid = $GLOBALS['fromID'];
+    $test = $GLOBALS['test'];
     if(in_array($fid, $test)){
         $p = rand(1, 100) % 10;
         $m = rand(1, 100) % 3;
