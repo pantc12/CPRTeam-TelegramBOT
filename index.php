@@ -146,10 +146,5 @@ if($userName != ""){                            // Check isset username
         if(preg_match('/別.*鬧.*了.*/', $message) === 1){
             kidding_me();
         }
-
-        if(preg_match('/ㄏ/', $message) === 1 ||
-           preg_match('/ㄎ/', $message) === 1){
-            laugh();
-        }
     }
 }
