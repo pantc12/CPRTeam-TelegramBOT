@@ -1,8 +1,8 @@
 <?php
 
-$cid = $GLOBALS['fromID'];
+$fid = $GLOBALS['fromID'];
 
-if(in_array($fromID, $test)){
+if(in_array($fid, $test)){
     $p = rand(1, 100) % 10;
     $m = rand(1, 100) % 3;
     $msg = '';
