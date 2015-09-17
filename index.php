@@ -10,7 +10,6 @@ include_once('commands.php');
 include_once('stickers.php');
 include_once('tools.php');
 include_once('api.php');
-include_once('test.php');
 
 // Get Telegram Hooks POST Data
 $json = file_get_contents('php://input') . PHP_EOL;
@@ -148,6 +147,3 @@ if($userName != ""){                            // Check isset username
         }
     }
 }
-
-test();
-test2();
