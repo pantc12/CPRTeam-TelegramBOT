@@ -1,5 +1,8 @@
 <?php
 
+$time = date('Y-m-d H:i:s', time());
+
+
 // API
 function sendMsg($m, $is_reply = true){
     sendChatAction("sendMsg");
@@ -14,6 +17,11 @@ function sendMsg($m, $is_reply = true){
     $url .= "&text=" . $m;
     $ch = curl_init($url);
     curl_exec($ch);
+
+    $log = curl_getinfo($ch);
+    logging("request", "<" . $time . ">" . PHP_EOL);
+    logging("request", $log);
+    
     curl_close($ch);
 }
 
@@ -28,6 +36,11 @@ function sendSticker($f, $is_reply = true){
     $url .= "&sticker=" . $f;
     $ch = curl_init($url);
     curl_exec($ch);
+
+    $log = curl_getinfo($ch);
+    logging("request", "<" . $time . ">" . PHP_EOL);
+    logging("request", $log);
+    
     curl_close($ch);
 }
 
@@ -42,6 +55,11 @@ function sendVoice($v, $is_reply = true){
     $url .= "&voice=" . $v;
     $ch = curl_init($url);
     curl_exec($ch);
+
+    $log = curl_getinfo($ch);
+    logging("request", "<" . $time . ">" . PHP_EOL);
+    logging("request", $log);
+    
     curl_close($ch);
 }
 
@@ -81,5 +99,10 @@ function sendChatAction($a){
     $url .= "&action=" . $action;
     $ch = curl_init($url);
     curl_exec($ch);
+
+    $log = curl_getinfo($ch);
+    logging("request", "<" . $time . ">" . PHP_EOL);
+    logging("request", $log);
+    
     curl_close($ch);
 }
