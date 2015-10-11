@@ -1,6 +1,5 @@
 <?php
 
-$time = date('Y-m-d H:i:s', time());
 
 
 // API
@@ -18,6 +17,7 @@ function sendMsg($m, $is_reply = true){
     $ch = curl_init($url);
     curl_exec($ch);
 
+    $time = date('Y-m-d H:i:s', time());
     $log = curl_getinfo($ch);
     logging("request", "<" . $time . ">" . PHP_EOL);
     logging("request", $log);
@@ -37,6 +37,7 @@ function sendSticker($f, $is_reply = true){
     $ch = curl_init($url);
     curl_exec($ch);
 
+    $time = date('Y-m-d H:i:s', time());
     $log = curl_getinfo($ch);
     logging("request", "<" . $time . ">" . PHP_EOL);
     logging("request", $log);
@@ -56,6 +57,7 @@ function sendVoice($v, $is_reply = true){
     $ch = curl_init($url);
     curl_exec($ch);
 
+    $time = date('Y-m-d H:i:s', time());
     $log = curl_getinfo($ch);
     logging("request", "<" . $time . ">" . PHP_EOL);
     logging("request", $log);
@@ -100,6 +102,7 @@ function sendChatAction($a){
     $ch = curl_init($url);
     curl_exec($ch);
 
+    $time = date('Y-m-d H:i:s', time());
     $log = curl_getinfo($ch);
     logging("request", "<" . $time . ">" . PHP_EOL);
     logging("request", $log);
