@@ -43,7 +43,7 @@ if($userName != ""){                            // Check isset username
             switch ($cmd[0]) {
                 case "/ping":
                     if(count($cmd) == 2){
-                        ping($cmd[1]);  
+                        ping($cmd[1]);
                     }else{
                         error(BAD_PARAMETER);
                     }
@@ -51,7 +51,7 @@ if($userName != ""){                            // Check isset username
 
                 case "/ping6":
                     if(count($cmd) == 2){
-                        ping6($cmd[1]); 
+                        ping6($cmd[1]);
                     }else{
                         error(BAD_PARAMETER);
                     }
@@ -72,7 +72,7 @@ if($userName != ""){                            // Check isset username
                         error(BAD_PARAMETER);
                     }
                     break;
-                
+
                 case "/nslookup":
                     if(count($cmd) == 3){
                         nslookup($cmd[1], $cmd[2]);
@@ -111,7 +111,7 @@ if($userName != ""){                            // Check isset username
                 case "/uptime":
                     uptime();
                     break;
-                
+
                 default:
                     if(strpos($message, "@" . BOT_NAME)){
                         sendMsg("我沒這指令, 你想做什麼??");
@@ -125,7 +125,7 @@ if($userName != ""){                            // Check isset username
         if(strpos($message, "@" . BOT_NAME) !== false){
             sendMsg("嗨~Tag我幹嘛?");
         }
-        
+
         if(preg_match('/無.*奈.*/', $message) === 1){
             helpless();
         }
@@ -144,6 +144,10 @@ if($userName != ""){                            // Check isset username
 
         if(preg_match('/別.*鬧.*了.*/', $message) === 1){
             kidding_me();
+        }
+
+        if(preg_match('/蛤.*/', $message) === 1){
+            ha();
         }
     }
 }

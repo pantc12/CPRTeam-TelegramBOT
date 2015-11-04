@@ -12,7 +12,7 @@ function helpless(){
         case 1:
             $sid = "BQADBQADbAAD-hheAnxlkeFhv7A6Ag";
             break;
-        
+
         default:
             $sid = "BQADBQADYAAD-hheAgABg2-XAQ3-7AI";
             break;
@@ -37,5 +37,10 @@ function zzz(){
 
 function kidding_me(){
     $sid = "BQADBQADdAAD-hheAkECocwnIoT7Ag";
+    sendSticker($sid);
+}
+
+function ha(){
+    $sid = "BQADBQADmAAD-hheAr5q8wj8BigKAg";
     sendSticker($sid);
 }
