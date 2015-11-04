@@ -149,5 +149,9 @@ if($userName != ""){                            // Check isset username
         if(preg_match('/蛤.*/', $message) === 1){
             ha();
         }
+
+        if(preg_match('/ㄏㄚˊ.*/', $message) === 1){
+            ha();
+        }
     }
 }
