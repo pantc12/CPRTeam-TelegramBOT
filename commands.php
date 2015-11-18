@@ -82,14 +82,12 @@ function burn(){
 }
 
 function tagall(){
-    if($chatID == -6205296){
-        $db = new SQLite3('bot.db');
-        $query = $db->query("SELECT username FROM CPRTeam_STAFF");
-        $i = 0;
-        $row = array();
-        while ($result = $query->fetchArray(SQLITE3_ASSOC)) {
-            $row[$i++]["username"] = $result["username"];
-        }
+    $db = new SQLite3('bot.db');
+    $query = $db->query("SELECT username FROM CPRTeam_STAFF");
+    $i = 0;
+    $row = array();
+    while ($result = $query->fetchArray(SQLITE3_ASSOC)) {
+        $row[$i++]["username"] = $result["username"];
     }
     $msg = "";
     for ($i = 0; $i < count($row); $i++){
