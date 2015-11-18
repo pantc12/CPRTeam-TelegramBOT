@@ -34,6 +34,28 @@ $userName = $data['message']['from']['username'];
 $message = $data['message']['text'];
 
 if($userName != ""){                            // Check isset username
+    if($chatID == -6205296){
+        $db = new SQLite3('bot.db');
+        $db->exec("CREATE TABLE IF NOT EXISTS `CPRTeam_STAFF` (
+            `id`    INTEGER PRIMARY KEY AUTOINCREMENT,
+            `uid`   TEXT NOT NULL,
+            `username`  TEXT
+        )");
+        $query = $db->query("SELECT * FROM CPRTeam_STAFF WHERE uid = '$fromID'");
+        $i = 0;
+        $row = array();
+        while ($result = $query->fetchArray(SQLITE3_ASSOC)) {
+            $row[$i]["uid"] = $result["uid"];
+            $row[$i]["username"] = $result["username"];
+            $i++;
+        }
+        if(count($row) == 0){
+            $db->exec("INSERT INTO CPRTeam_STAFF (uid, username) VALUES ('$fromID','$userName')");
+        }else{
+            $db->exec("UPDATE CPRTeam_STAFF SET username = '$userName' WHERE uid = '$fromID'");
+        }
+    }
+
     if(substr($message, 0, 1) == "/"){          // Check is command
         if(in_array($fromID, $users) || in_array($chatID, $groups)){          // Check White List
             $message = strtolower($message);
@@ -157,26 +179,5 @@ if($userName != ""){                            // Check isset username
         if(preg_match('/ㄏㄚˊ.*/', $message) === 1){
             ha();
         }
-
-        if($chatID == -6205296){
-            $db = new SQLite3('bot.db');
-            $db->exec("CREATE TABLE IF NOT EXISTS `CPRTeam_STAFF` (
-                `id`    INTEGER PRIMARY KEY AUTOINCREMENT,
-                `uid`   TEXT NOT NULL,
-                `username`  TEXT
-            )");
-            $query = $db->query("SELECT * FROM CPRTeam_STAFF WHERE username = '$userName'");
-            $i = 0;
-            $row = array();
-            while ($result = $query->fetchArray(SQLITE3_ASSOC)) {
-                $row[$i]["uid"] = $result["uid"];
-                $row[$i]["username"] = $result["username"];
-                $i++;
-            }
-            if(count($row) == 0){
-                $db->exec("INSERT INTO CPRTeam_STAFF (uid, username) VALUES ('$fromID','$userName')");
-            }
-        }
-
     }
 }
