@@ -8,26 +8,26 @@ define('BAD_PARAMETER', 4);
 
 function error($id){
     switch ($id) {
-        case 1:
+        case REQUEST_TIMEOUT:
             $msg = '@' . $GLOBALS['userName'] . ': Request Timeout!!';
             sendMsg($msg);
             break;
 
-        case 2:
+        case PERMISSION_ERROR:
             $msg = '@' . $GLOBALS['userName'] . ': Permission Denied!!';
             sendMsg($msg);
             break;
 
-        case 3:
+        case COMMAND_NOT_FOUND:
             $msg = '@' . $GLOBALS['userName'] . ': Command Not Found!!';
             sendMsg($msg);
             break;
 
-        case 4:
+        case BAD_PARAMETER:
             $msg = '@' . $GLOBALS['userName'] . ': Bad Parameters!!';
             sendMsg($msg);
             break;
-        
+
         default:
             $msg = '@' . $GLOBALS['userName'] . ': Unknown Error!!';
             sendMsg($msg);
