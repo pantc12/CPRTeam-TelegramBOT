@@ -91,7 +91,9 @@ function tagall(){
     }
     $msg = "";
     for ($i = 0; $i < count($row); $i++){
-        $msg .= "@" . $row[$i]['username'] . " ";
+        if($row[$i]['username'] != $GLOBALS['userName']){
+            $msg .= "@" . $row[$i]['username'] . " ";
+        }
     }
     sendMsg($msg);
 }
