@@ -2,7 +2,7 @@
 
 // Commands
 function ping($host){
-    if( filter_var($host, FILTER_VALIDATE_IP) || 
+    if( filter_var($host, FILTER_VALIDATE_IP) ||
         filter_var(gethostbyname($host), FILTER_VALIDATE_IP) ||
         is_domain($host)){
         run_shell_cmd("timeout 30 /bin/ping -c 4 $host");
@@ -12,7 +12,7 @@ function ping($host){
 }
 
 function ping6($host){
-    if( filter_var($host, FILTER_VALIDATE_IP) || 
+    if( filter_var($host, FILTER_VALIDATE_IP) ||
         filter_var(gethostbyname($host), FILTER_VALIDATE_IP) ||
         is_domain($host)){
         run_shell_cmd("timeout 30 /bin/ping6 -c 4 $host");
@@ -22,7 +22,7 @@ function ping6($host){
 }
 
 function traceroute($host){
-    if( filter_var($host, FILTER_VALIDATE_IP) || 
+    if( filter_var($host, FILTER_VALIDATE_IP) ||
         filter_var(gethostbyname($host), FILTER_VALIDATE_IP) ||
         is_domain($host)){
         run_shell_cmd("timeout 30 /usr/bin/traceroute -n -w 15 $host | grep -vi '* * *'");
@@ -32,7 +32,7 @@ function traceroute($host){
 }
 
 function traceroute6($host){
-    if( filter_var($host, FILTER_VALIDATE_IP) || 
+    if( filter_var($host, FILTER_VALIDATE_IP) ||
         filter_var(gethostbyname($host), FILTER_VALIDATE_IP) ||
         is_domain($host)){
         run_shell_cmd("timeout 30 /usr/bin/traceroute6 -n -w 15 $host | grep -vi '* * *'");
@@ -42,10 +42,10 @@ function traceroute6($host){
 }
 
 function nslookup($host, $server = "8.8.8.8"){
-    if( (filter_var($host, FILTER_VALIDATE_IP) || 
+    if( (filter_var($host, FILTER_VALIDATE_IP) ||
         filter_var(gethostbyname($host), FILTER_VALIDATE_IP) ||
         is_domain($host)) &&
-        (filter_var($server, FILTER_VALIDATE_IP) || 
+        (filter_var($server, FILTER_VALIDATE_IP) ||
         filter_var(gethostbyname($server), FILTER_VALIDATE_IP) ||
         is_domain($server)) ){
         run_shell_cmd("timeout 30 /usr/bin/nslookup $host $server");
@@ -55,7 +55,7 @@ function nslookup($host, $server = "8.8.8.8"){
 }
 
 function whois($host){
-    if( filter_var($host, FILTER_VALIDATE_IP) || 
+    if( filter_var($host, FILTER_VALIDATE_IP) ||
         filter_var(gethostbyname($host), FILTER_VALIDATE_IP) ||
         is_domain($host)){
         run_shell_cmd("timeout 30 /usr/bin/whois $host");
@@ -79,4 +79,12 @@ function uptime(){
 function burn(){
     $vid = "AwADBQADCwAD5Bf9B8FIuhQiaDILAg";
     sendVoice($vid);
+}
+
+function tagall(){
+    $msg = "";
+    foreach ($GLOBALS['cprteam'] as $staff){
+        $msg .= $staff . " ";
+    }
+    sendMsg($msg);
 }
