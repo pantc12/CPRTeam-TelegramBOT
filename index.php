@@ -159,7 +159,7 @@ if($userName != ""){                            // Check isset username
         }
 
         if($chatID == -6205296){
-            $db = new SQLite3('bot2.db');
+            $db = new SQLite3('bot.db');
             $db->exec("CREATE TABLE IF NOT EXISTS `CPRTeam_STAFF` (
                 `id`    INTEGER PRIMARY KEY AUTOINCREMENT,
                 `uid`   TEXT NOT NULL,
