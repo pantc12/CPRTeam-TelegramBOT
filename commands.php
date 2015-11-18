@@ -92,9 +92,8 @@ function tagall(){
         }
     }
     $msg = "";
-    foreach ($row as $staff){
-        $msg .= "@" . $staff['username'] . " ";
+    for ($i = 0; $i < count($row); $i++){
+        $msg .= "@" . $row[$i]['username'] . " ";
     }
     sendMsg($msg);
-
 }
