@@ -157,5 +157,26 @@ if($userName != ""){                            // Check isset username
         if(preg_match('/ㄏㄚˊ.*/', $message) === 1){
             ha();
         }
+
+        if($chatID == -6205296){
+            $db = new SQLite3('bot2.db');
+            $db->exec("CREATE TABLE IF NOT EXISTS `CPRTeam_STAFF` (
+                `id`    INTEGER PRIMARY KEY AUTOINCREMENT,
+                `uid`   TEXT NOT NULL,
+                `username`  TEXT
+            )");
+            $query = $db->query("SELECT * FROM CPRTeam_STAFF WHERE username = '$userName'");
+            $i = 0;
+            $row = array();
+            while ($result = $query->fetchArray(SQLITE3_ASSOC)) {
+                $row[$i]["uid"] = $result["uid"];
+                $row[$i]["username"] = $result["username"];
+                $i++;
+            }
+            if(count($row) == 0){
+                $db->exec("INSERT INTO CPRTeam_STAFF (uid, username) VALUES ('$fromID','$userName')")
+            }
+        }
+
     }
 }
