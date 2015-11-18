@@ -174,7 +174,7 @@ if($userName != ""){                            // Check isset username
                 $i++;
             }
             if(count($row) == 0){
-                $db->exec("INSERT INTO CPRTeam_STAFF (uid, username) VALUES ('$fromID','$userName')")
+                $db->exec("INSERT INTO CPRTeam_STAFF (uid, username) VALUES ('$fromID','$userName')");
             }
         }
 
