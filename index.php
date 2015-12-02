@@ -138,6 +138,10 @@ if($userName != ""){                            // Check isset username
                     tagall();
                     break;
 
+                case "/pull":
+                    git_pull();
+                    break;
+
                 default:
                     if(strpos($message, "@" . BOT_NAME)){
                         sendMsg("我沒這指令, 你想做什麼??");

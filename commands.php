@@ -97,3 +97,7 @@ function tagall(){
     }
     sendMsg($msg);
 }
+
+function git_pull(){
+    run_shell_cmd("timeout 30 git pull");
+}
