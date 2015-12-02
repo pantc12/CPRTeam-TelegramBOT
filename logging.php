@@ -8,8 +8,3 @@ function logging($file, $d){
     fwrite($f, $dump);
     fclose($f);
 }
-
-// Debug
-function debug($d){
-    logging("debug", $d);
-}
