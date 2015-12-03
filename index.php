@@ -36,7 +36,7 @@ try{
     if(file_exists('TelegramBOT.db')){
         $db = new SQLite3('TelegramBOT.db');
     }else{
-        $error_msg = "Please Access https://" . $_SERVER['SERVER_NAME'] . " /install.php";
+        $error_msg = "Please Access https://" . $_SERVER['SERVER_NAME'] . "/install.php";
         logging("error", "<" . $time . ">" . PHP_EOL);
         logging("error", $error_msg);
         exit("Check error.log");
