@@ -37,14 +37,14 @@ try{
         $db = new SQLite3('TelegramBOT.db');
     }else{
         $error_msg = "Please Access https://" . $_SERVER['SERVER_NAME'] . "/install.php";
-        logging("error", "<" . $time . ">" . PHP_EOL);
-        logging("error", $error_msg);
+        logging("error", "<" . $time . ">");
+        logging("error", $error_msg . PHP_EOL);
         exit("Check error.log");
     }
 }catch (Exception $exception) {
     $error_msg = $exception->getMessage();
-    logging("error", "<" . $time . ">" . PHP_EOL);
-    logging("error", $error_msg);
+    logging("error", "<" . $time . ">");
+    logging("error", $error_msg . PHP_EOL);
     exit("Check error.log");
 }
 
