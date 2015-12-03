@@ -41,7 +41,7 @@ try{
         logging("error", $error_msg . PHP_EOL);
         exit("Check error.log");
     }
-}catch (Exception $exception) {
+}catch (Exception $exception){
     $error_msg = $exception->getMessage();
     logging("error", "<" . $time . ">");
     logging("error", $error_msg . PHP_EOL);
