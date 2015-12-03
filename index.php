@@ -2,6 +2,7 @@
 set_time_limit(60);
 date_default_timezone_set('Asia/Taipei');
 header('Accept: application/json');
+header('Content-Type: application/json; charset=utf-8');
 
 include_once('commands.php');
 include_once('tools.php');
@@ -35,7 +36,7 @@ try{
     if(file_exists('TelegramBOT.db')){
         $db = new SQLite3('TelegramBOT.db');
     }else{
-        $error_msg = "Please Access http(s)://<your_bot_server_address>/install.php"
+        $error_msg = "Please Access http(s)://<your_bot_server_address>/install.php";
         logging("error", "<" . $time . ">" . PHP_EOL);
         logging("error", $error_msg);
         exit("Check error.log");
