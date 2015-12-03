@@ -3,7 +3,14 @@ date_default_timezone_set('Asia/Taipei');
 header('Content-Type: text/html; charset=utf-8');
 
 if(isset($_POST['BOT_TOKEN']) && isset($_POST['BOT_USERNAME']) && isset($_POST['GroupID']) ){
-    $db = new SQLite3('TelegramBOT.db', SQLITE3_OPEN_CREATE);
+    try{
+        $db = new SQLite3('TelegramBOT.db', SQLITE3_OPEN_CREATE);
+    }catch (Exception $exception){
+        $error_msg = $exception->getMessage();
+        logging("error", "<" . $time . ">");
+        logging("error", $error_msg . PHP_EOL);
+        exit("Check error.log");
+    }
 
     // Create Users
     $db->exec("CREATE TABLE IF NOT EXISTS `Users` (
