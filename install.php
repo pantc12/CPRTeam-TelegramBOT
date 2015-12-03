@@ -4,7 +4,7 @@ header('Content-Type: text/html; charset=utf-8');
 
 if(isset($_POST['BOT_TOKEN']) && isset($_POST['BOT_USERNAME']) && isset($_POST['GroupID']) ){
     try{
-        $db = new SQLite3('TelegramBOT.db', SQLITE3_OPEN_CREATE);
+        $db = new SQLite3('TelegramBOT.db', SQLITE3_OPEN_CREATE|SQLITE3_OPEN_READWRITE);
     }catch (Exception $exception){
         $error_msg = $exception->getMessage();
         logging("error", "<" . $time . ">");
