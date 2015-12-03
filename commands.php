@@ -10,16 +10,16 @@ function help(){
 }
 
 function uptime(){
-    run_shell_cmd("timeout 30 /usr/bin/uptime");
+    run_shell_cmd("/usr/bin/uptime");
 }
 
 function git_pull(){
-    run_shell_cmd("timeout 30 git pull");
+    run_shell_cmd("git pull");
 }
 
 function tagall(){
     $db = new SQLite3('bot.db');
-    $query = $db->query("SELECT username FROM CPRTeam_STAFF");
+    $query = $db->query("SELECT username FROM Users");
     $i = 0;
     $row = array();
     while ($result = $query->fetchArray(SQLITE3_ASSOC)) {

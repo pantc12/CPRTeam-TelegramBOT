@@ -6,7 +6,7 @@ function sendMsg($m, $is_reply = true){
     $cid = $GLOBALS['chatID'];
     $mid = $GLOBALS['messageID'];
     $m = urlencode($m);
-    $url = "https://api.telegram.org/bot" . TOKEN . "/sendMessage?chat_id=" . $cid;
+    $url = "https://api.telegram.org/bot" . BOT_TOKEN . "/sendMessage?chat_id=" . $cid;
     $url .= "&disable_web_page_preview=true";
     if($is_reply){
         $url .= "&reply_to_message_id=" . $mid;
@@ -27,7 +27,7 @@ function sendSticker($f, $is_reply = true){
     sendChatAction("sendSticker");
     $cid = $GLOBALS['chatID'];
     $mid = $GLOBALS['messageID'];
-    $url = "https://api.telegram.org/bot" . TOKEN . "/sendSticker?chat_id=" . $cid;
+    $url = "https://api.telegram.org/bot" . BOT_TOKEN . "/sendSticker?chat_id=" . $cid;
     if($is_reply){
         $url .= "&reply_to_message_id=" . $mid;
     }
@@ -47,7 +47,7 @@ function sendVoice($v, $is_reply = true){
     sendChatAction("sendVoice");
     $cid = $GLOBALS['chatID'];
     $mid = $GLOBALS['messageID'];
-    $url = "https://api.telegram.org/bot" . TOKEN . "/sendVoice?chat_id=" . $cid;
+    $url = "https://api.telegram.org/bot" . BOT_TOKEN . "/sendVoice?chat_id=" . $cid;
     if($is_reply){
         $url .= "&reply_to_message_id=" . $mid;
     }
@@ -95,7 +95,7 @@ function sendChatAction($a){
             break;
     }
 
-    $url = "https://api.telegram.org/bot" . TOKEN . "/sendChatAction?chat_id=" . $cid;
+    $url = "https://api.telegram.org/bot" . BOT_TOKEN . "/sendChatAction?chat_id=" . $cid;
     $url .= "&action=" . $action;
     $ch = curl_init($url);
     curl_exec($ch);

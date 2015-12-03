@@ -3,14 +3,13 @@ set_time_limit(60);
 date_default_timezone_set('Asia/Taipei');
 header('Accept: application/json');
 
-include_once('config.php');
-include_once('logging.php');
 include_once('commands.php');
 include_once('tools.php');
 include_once('api.php');
 
-// Get Telegram Hooks POST Data
+// Get Telegram hook POST Data
 $json = file_get_contents('php://input') . PHP_EOL;
+// Decode hook data from JSON to Array
 $data = json_decode($json, true);
 
 // Logging Hooks Data Raw
@@ -22,7 +21,7 @@ logging("hooks_raw", $json);
 logging("hooks", "<" . $time . ">" . PHP_EOL);
 logging("hooks", $data);
 
-// Global Variable
+// Initial Hook Variable
 $updateID = $data['update_id'];
 $messageID = $data['message']['message_id'];
 $fromID = $data['message']['from']['id'];
@@ -31,32 +30,84 @@ $date = $data['message']['date'];
 $userName = $data['message']['from']['username'];
 $message = $data['message']['text'];
 
+// Initial DB Connection
+try{
+    if(file_exists('TelegramBOT.db')){
+        $db = new SQLite3('TelegramBOT.db');
+    }else{
+        $error_msg = "Please Access http(s)://<your_bot_server_address>/install.php"
+        logging("error", "<" . $time . ">" . PHP_EOL);
+        logging("error", $error_msg);
+        exit("Check error.log");
+    }
+}catch (Exception $exception) {
+    $error_msg = $exception->getMessage();
+    logging("error", "<" . $time . ">" . PHP_EOL);
+    logging("error", $error_msg);
+    exit("Check error.log");
+}
+
+// Initial Config
+$config = array();
+$query = $db->query("SELECT * FROM Config");
+while ($result = $query->fetchArray(SQLITE3_ASSOC)) {
+    $config[$result["key"]] = $result["value"];
+}
+
+// Initial Users
+$users = array();
+$query = $db->query("SELECT * FROM Users");
+$i = 0;
+while ($result = $query->fetchArray(SQLITE3_ASSOC)) {
+    $users[$i]["uid"] = $result["uid"];
+    $users[$i]["username"] = $result["username"];
+    $i++;
+}
+
+// Initial WhiteList
+$whiteList = array();
+$query = $db->query("SELECT * FROM WhiteList");
+$i = 0;
+while ($result = $query->fetchArray(SQLITE3_ASSOC)) {
+    $whiteList[$i] = $result["uid"];
+    $i++;
+}
+
+// Initial Help Command Content
+$cmd_list = array(
+    '/help - Show This Help',
+    '/uptime - Show System Uptime',
+    '/tagall - Tag ALL CPRTeam Staff',
+    '/pull - Update BOT Program',
+);
+
+// Define Constant
+define('BOT_TOKEN', $config["BOT_TOKEN"]);
+define('BOT_USERNAME', $config["BOT_USERNAME"]);
+
+// Main Program
 if($userName != ""){
-    if($chatID == -6205296){
-        $db = new SQLite3('bot.db');
-        $db->exec("CREATE TABLE IF NOT EXISTS `CPRTeam_STAFF` (
-            `id`    INTEGER PRIMARY KEY AUTOINCREMENT,
-            `uid`   TEXT NOT NULL,
-            `username`  TEXT
-        )");
-        $query = $db->query("SELECT * FROM CPRTeam_STAFF WHERE uid = '$fromID'");
+    // Auto Learning Users in Group
+    if($chatID == $config["GroupID"]){
+        $tmp = array();
+        $query = $db->query("SELECT * FROM Users WHERE uid = '$fromID'");
         $i = 0;
-        $row = array();
         while ($result = $query->fetchArray(SQLITE3_ASSOC)) {
-            $row[$i]["uid"] = $result["uid"];
-            $row[$i]["username"] = $result["username"];
+            $tmp[$i]["uid"] = $result["uid"];
+            $tmp[$i]["username"] = $result["username"];
             $i++;
         }
-        if(count($row) == 0){
-            $db->exec("INSERT INTO CPRTeam_STAFF (uid, username) VALUES ('$fromID','$userName')");
+        if(count($tmp) == 0){
+            $db->exec("INSERT INTO Users (uid, username) VALUES ('$fromID','$userName')");
         }else{
-            $db->exec("UPDATE CPRTeam_STAFF SET username = '$userName' WHERE uid = '$fromID'");
+            $db->exec("UPDATE Users SET username = '$userName' WHERE uid = '$fromID'");
         }
     }
 
+    // Command Handle
     if(substr($message, 0, 1) == "/"){
-        if(in_array($fromID, $users) || in_array($chatID, $groups)){
-            $cmd = str_replace(strtolower("@" . BOT_NAME), '', strtolower($message));
+        if(in_array($fromID, $whiteList) || in_array($chatID, $whiteList)){
+            $cmd = str_replace(strtolower("@" . BOT_USERNAME), '', strtolower($message));
 
             switch ($cmd) {
                 case "/help":
